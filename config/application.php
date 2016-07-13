@@ -1,6 +1,6 @@
 <?php
   define('APP_NAME', 'Desenvolvimento para web 3');
-  define('SITE_ROOT', '/utfpr/web-dev3-code/pi-mvc'); # com barras
+  define('SITE_ROOT', '/utfpr-code/web-dev3/pi-mvc'); # com barras
   define('APP_ROOT_FOLDER', $_SERVER['DOCUMENT_ROOT'] . SITE_ROOT );
   //define('APP_ROOT_FOLDER', 'https://gzmarques.sytes.net' . SITE_ROOT );
   define('LOG_FILE', APP_ROOT_FOLDER .  '/logs/application.log');

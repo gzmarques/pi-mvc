@@ -6,13 +6,13 @@ php_flag display_errors on
 
 # Logger Options
 php_flag log_errors on
-php_value error_log /var/www/utfpr/web-dev3-code/pi-mvc/logs/PHP_errors.log
+php_value error_log /var/www/utfpr-code/web-dev3/pi-mvc/logs/PHP_errors.log
 
 # Ativa o suporte à reescrita de URL.
 RewriteEngine On
 
 # Diretório base para sobreescrições
-RewriteBase '/utfpr/web-dev3-code/pi-mvc'
+RewriteBase '/utfpr-code/web-dev3/pi-mvc'
 
 # Não aplica a condição para arquivos que existam. Isso significa que as imagens, CSS, JS e outros arquivos que já existem continuarão funcionando perfeitamente.
 RewriteCond %{REQUEST_FILENAME} !-f
