@@ -1,0 +1,40 @@
+<header class="page-header clearfix">
+  <h1>Resultado da busca</h1>
+</header>
+
+<?php require '_clients_search_bar.phtml'; ?>
+<?php require '_orders_search_bar.phtml'; ?>
+
+<div>
+
+    <table class='table table-bordered table-striped sortable'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data do pedido</th>
+                <th>Cliente</th>
+                <th>Vendedor</th>
+                <th class="sorttable_nosort"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->orders as $order) {?>
+            <tr class=<?= $order->isAllowedUser() ? 'clickable_row' : 'unclickable_row' ?> data-href=<?= ViewHelpers::urlFor("/pedidos/{$order->getId()}") ?>>
+                <td><?= $order->getId() ?></td>
+                <td><?= ViewHelpers::dateFormat($order->getCreatedAt()) ?></td>
+                <td><?= $order->getClient()->getName() ?></td>
+                <td><?= $order->getUser()->getFirstName() ?></td>
+                <td>
+                <?php if(($order->getStatus() == 0) && $order->isAllowedUser()): ?>
+                  <?= ViewHelpers::linkTo("/pedidos/{$order->getId()}/deletar", '<span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Deletar" ></span>', 'class="btn btn-xs btn-danger"' ) ?>
+                  <?= ViewHelpers::linkTo("/pedidos/{$order->getId()}/fechar-pedido", '<span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Passa Régua!" ></span>', 'class="btn btn-xs btn-primary"' ) ?>
+                <?php else:?>
+                  <?= Order::prettyStatus($order->getStatus()) ?>
+                <?php endIf ?>
+                </td>
+            </tr>
+            <?php } ?>
+         </tbody>
+     </table>
+
+</div>

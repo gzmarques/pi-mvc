@@ -1,0 +1,54 @@
+<div class="col-xs-8 col-xs-offset-2 search-area">
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Adicionar Produto</div>
+
+    <div class="panel-body">
+
+      <form class="search-input" action="<?= ViewHelpers::urlFor("/pedidos/". $this->order->getId() ."/adiciona-produto/") ?>" method="POST">
+
+        <input type="hidden" id="product_id" name="product_id" />
+        <div class="form-group col-xs-12 <?= $this->order->getErrors('name') ? 'has-error' : '' ?>">
+          <label class="control-label" for="discount">Buscar Produto </label>
+          <input type="text" class="form-control" data-url="<?= ViewHelpers::urlFor('/produtos/auto_complete_search') ?>" name="name" id="autocomplete_products"/>
+          <p class="help-block"><?= $this->order->getErrors('name') ?></p>
+        </div>
+
+        <div class="form-inline">
+
+          <input type="hidden" id="amount" name="amount" />
+          <div class="form-group col-md-2 col-xs-offset-0<?= $this->order->getErrors('amount') ? 'has-error' : '' ?>">
+            <label class="control-label" for="amount">Quantidade </label>
+            <input type="number" class="form-control" id="stock" name="amount"/>
+            <p class="help-block"><?= $this->order->getErrors('amount') ?></p>
+          </div>
+
+          <input type="hidden" id="discount" name="discount" />
+          <div class="form-group col-md-2 col-xs-offset-2 <?= $this->order->getErrors('discount') ? 'has-error' : '' ?>">
+            <label class="control-label" for="discount">Desconto </label>
+            <input type="number" class="form-control" name="discount" placeholder="%"/>
+            <p class="help-block"><?= $this->order->getErrors('amount') ?></p>
+          </div>
+
+          <div class="form-group col-md-2 col-xs-offset-2 <?= $this->order->getErrors('discount') ? 'has-error' : '' ?>">
+            <label class="control-label" for="discount">Valor final </label>
+            <input type="number" class="form-control" id="price" name="discount" disabled/>
+            <p class="help-block"><?= $this->order->getErrors('amount') ?></p>
+          </div>
+
+          <div class="form-group col-md-4 col-xs-offset-4">
+            <button type="submit" class="btn btn-primary">Novo Produto  <span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+
+        </div>
+
+
+
+      </form>
+
+    </div><!-- /.panel-body -->
+
+  </div><!-- /.panel panel-default -->
+
+</div>

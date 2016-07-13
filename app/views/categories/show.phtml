@@ -1,0 +1,31 @@
+<section>
+  <header class='page-header'>
+    <h1>Visualizando Categoria <?= $this->category->getName() ?></h1>
+  </header>
+      <table class='table table-bordered table-striped'>
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Categoria</th>
+                  <th>Data de cadastro</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php foreach ($this->products as $product) {?>
+              <tr>
+                  <td><?= $product->getId() ?></td>
+                  <td><?= ViewHelpers::truncate($product->getName()) ?></td>
+                  <td><?= $product->getCategory()->getName(); ?></td>
+                  <td><?= ViewHelpers::dateFormat($product->getCreatedAt()) ?></td>
+                  <td>
+                    <?= ViewHelpers::linkTo("/produtos/{$product->getId()}/editar", '<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar" ></span>', 'class="btn btn-xs btn-warning"' ) ?>
+                    <?= ViewHelpers::linkTo("/produtos/{$product->getId()}", '<span class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="Visualizar" ></span>', 'class="btn btn-xs btn-success"' ) ?>
+                    <?= ViewHelpers::linkTo("/produtos/{$product->getId()}/deletar", '<span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Deletar" ></span>', 'class="btn btn-xs btn-danger"' ) ?>
+                  </td>
+              </tr>
+              <?php } ?>
+           </tbody>
+       </table>
+</section>

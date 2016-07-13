@@ -1,0 +1,37 @@
+<div class="container-fluid">
+
+  <div class="col-xs-4 col-xs-offset-4 search-area">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">Buscar Produtos</div>
+
+      <div class="panel-body">
+
+        <form action="<?= ViewHelpers::urlFor("/produtos/busca") ?>" method="POST">
+
+          <div class=".col-lg-6">
+
+            <div class="input-group">
+
+              <input type="hidden" id="product_id" name="product_id" />
+
+                <input type="text" class="form-control" data-url="<?= ViewHelpers::urlFor('/produtos/auto_complete_search') ?>" name="name" id="autocomplete_products" placeholder="Produto ou ID"/>
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+                </span>
+
+            </div><!-- /input-group -->
+
+          </div><!-- /.col-lg-6 -->
+
+        </form>
+
+      </div><!-- /.panel-body -->
+
+    </div><!-- /.panel panel-default -->
+
+  </div>
+
+
+</div>

@@ -1,0 +1,230 @@
+/* Fixed navbar
+------------------------- */
+body {
+  padding-top: 70px;
+  /*background-color: #F3FAB6;*/
+  background-color: rgba(93, 89, 89, 0.34);
+}
+
+hr {
+  border-top: 1px solid #C5BFBF;
+}
+/* navbar
+------------------------- */
+.navbar {
+  min-height: 30px;
+}
+
+/*.nav-pills>li.active>a, .nav-pills>li.active>a:hover {
+  background-color: #005A31;
+}*/
+/* containers
+------------------------- */
+.center-container, .side-container {
+  padding: 10px;
+  min-height: 200px;
+  /*background-color: #A8CD1B;*/
+  background-color: rgba(255, 255, 255, 0.70);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* custum side-nav
+------------------------- */
+/*.custum-side-nav {
+  font-size: 12px;
+}
+
+.custum-side-nav li > a{
+  padding: 5px 7px;
+}*/
+
+/* Table options
+------------------------- */
+
+table td.options {
+  width: 200px;
+}
+
+table td.options ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+table td.options ul li {
+  display: inline;
+}
+
+/* Signin
+------------------------- */
+.form-signin, .links {
+  max-width: 330px;
+  margin: 0 auto;
+  padding-left: 15px;
+}
+
+.form-signin{
+  padding: 15px;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin, .links, .sign-up {
+  max-width: 430px;
+  margin: 0 auto;
+  padding-left: 15px;
+}
+
+
+/* Change defaults
+------------------------- */
+.form-group.has-error span.help-inline {
+  color: #b94a48;
+}
+
+.form-group .errors {
+  color: #b94a48;
+}
+
+.page-header {
+    border-bottom: 1px solid #C5BFBF;
+    margin: 0;
+}
+
+.search-area {
+  padding: 1% 0;
+}
+
+/** AutoComplete **/
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
+/* Sortable tables */
+
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE"
+}
+
+/** Fonts **/
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/RobotoTTF/Roboto-Light.ttf);
+}
+
+body {
+  font-family: roboto;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/** Clickable Tables **/
+.clickable_row {
+  cursor: pointer;
+}
+
+.table-striped>tbody>tr:hover.clickable_row:hover{
+  background-color: #d0d0d0;
+}
+
+.unclickable_row {
+  cursor: not-allowed;
+}
+
+/** Charts **/
+
+#chart {
+  width: 900px;
+  height: 500px;
+  padding: 1%;
+}
+
+/** User **/
+
+.avatar {
+  height: 200px;
+}
+
+.circle {
+  border-radius:50%;
+}
+
+.user-img {
+  margin: 5px;
+  width:42px;
+  height:42px;
+  overflow:hidden;
+}
+
+.user-area {
+  margin: 6px 12px;
+}
+
+.time {
+  float: none;
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+}
+
+.form-container {
+  background: #FFF;
+  padding-top: 20px;
+  border-left: 1px solid #DDD;
+  border-right: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+
+.form-tabs {
+  padding-left: 0;
+}

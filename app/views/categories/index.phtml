@@ -1,0 +1,32 @@
+<header class="page-header clearfix">
+  <h1>Todas as Categorias</h1>
+  <?= ViewHelpers::linkTo('/categorias/nova', '<span class="glyphicon glyphicon-plus">', 'class="btn btn-primary pull-right"') ?>
+</header>
+
+<div>
+
+    <table class='table table-bordered table-striped sortable'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de cadastro</th>
+                <th class="sorttable_nosort"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->categories as $category) {?>
+            <tr  class="clickable_row" data-href=<?= ViewHelpers::urlFor("/categorias/{$category->getId()}") ?>>
+                <td><?= $category->getId() ?></td>
+                <td><?= $category->getName() ?></td>
+                <td><?= ViewHelpers::dateFormat($category->getCreatedAt()) ?></td>
+                <td>
+                  <?= ViewHelpers::linkTo("/categorias/{$category->getId()}/editar", '<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar"></span>', 'class="btn btn-xs btn-warning"' ) ?>
+                  <?= ViewHelpers::linkTo("/categorias/{$category->getId()}/deletar", '<span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Deletar"></span>', 'class="btn btn-xs btn-danger"' ) ?>
+                </td>
+            </tr>
+            <?php } ?>
+         </tbody>
+     </table>
+
+</div>

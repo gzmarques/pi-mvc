@@ -1,0 +1,29 @@
+<form role="form" action="<?= ViewHelpers::urlFor($this->action) ?>" method="POST">
+
+  <div class="form-group <?= $this->product->getErrors('name') ? 'has-error' : '' ?>">
+    <label class="control-label" for="product_name">Nome:*</label>
+    <input type="text" class="form-control" name="product[name]" value="<?= $this->product->getName() ?>"
+           id="product_name" placeholder="Produto">
+    <p class="help-block"><?= $this->product->getErrors('name') ?></p>
+  </div>
+
+  <div class="form-group <?= $this->product->getErrors('category_id') ? 'has-error' : '' ?>">
+    <label class="control-label" for="product_category_id">Categoria:*</label>
+    <select class="form-control" name="product[category_id]" id="product_category_id">
+      <option value="">Selecione uma categoria</option>
+      <?php foreach ($this->categories as $category) {?>
+        <option value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+      <?php } ?>
+    </select>
+    <p class="help-block"><?= $this->product->getErrors('category_id') ?></p>
+  </div>
+
+  <div class="form-group <?= $this->product->getErrors('price') ? 'has-error' : '' ?>">
+    <label class="control-label" for="product_price">Preço:*</label>
+    <input type="text" class="form-control" name="product[price]" value="<?= $this->product->getPrice() ?>"
+           id="product_price" placeholder="R$">
+    <p class="help-block"><?= $this->product->getErrors('price') ?></p>
+  </div>
+
+  <button type="submit" class="btn btn-primary"> <?= $this->submit ?></button>
+</form>

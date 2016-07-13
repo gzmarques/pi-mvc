@@ -1,0 +1,65 @@
+<section>
+  <header class='page-header'>
+    <h1>Pedido nº <?= $this->order->getId() ?></h1>
+    <h3>Cliente - <?= $this->order->getClient()->getName() ?></h3>
+    <h4>Vendedor - <?= $this->order->getUser()->getFirstName() ?></h4>
+    <?php if($this->order->getStatus() == 0) require "_search_bar.phtml"; ?>
+  </header>
+  <div>
+
+      <table class='table table-bordered table-striped sortable'>
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Data de inclusão</th>
+                  <th>Nome</th>
+                  <th>Categoria</th>
+                  <th>Quantidade</th>
+                  <th>Preço Unitário</th>
+                  <th>Preço Total</th>
+                  <th class="sorttable_nosort"></th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php foreach ($this->order->getItems() as $item) {?>
+              <tr>
+                  <td><?= $item->getId() ?></td>
+                  <td><?= ViewHelpers::dateTimeFormat($item->getCreatedAt()) ?></td>
+                  <td><?= ViewHelpers::truncate($item->getProduct()->getName()) ?></td>
+                  <td><?= $item->getProduct()->getCategory()->getName() ?></td>
+                  <td>
+                    <form action="<?= ViewHelpers::urlFor($this->action . $item->getId()) ?>" method="POST">
+
+                      <?= isset($this->submit['plus']) ? '<button type="submit" class="btn btn-xs btn-danger" name="operation" value="plus">' . $this->submit["plus"] . '</button>' : "" ?>
+
+                      <?= $this->order->getStatus() == 0 ? '<input type="number" name="amount" value="' . $item->getAmount() . '" />' : $item->getAmount() ?>
+
+                      <?= isset($this->submit['minus']) ? '<button type="submit" class="btn btn-xs btn-danger" name="operation" value="minus">' . $this->submit["minus"] . '</button>' : "" ?>
+
+                      <?= isset($this->submit['refresh']) ? '<button type="submit" class="btn btn-xs btn-danger" name="operation" value="refresh">' . $this->submit["refresh"] . '</button>' : "" ?>
+                    </form>
+                  </td>
+                  <td><?= ViewHelpers::currencyFormat($item->getItemPrice()) ?></td>
+                  <td><?= ViewHelpers::currencyFormat($item->getItemPrice() * $item->getAmount()) ?></td>
+                  <td>
+                    <?php if(($this->order->getStatus() == 0) && SessionHelpers::currentUser()->getId() == $this->order->getUser()->getId()): ?>
+                      <?= ViewHelpers::linkTo("/pedidos/{$this->order->getId()}/remove-produto/{$item->getId()}", '<span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Deletar" ></span>', 'class="btn btn-xs btn-danger"' ) ?>
+                    <?php else:?>
+                      <?= Order::prettyStatus($this->order->getStatus()) ?>
+                    <?php endIf ?>
+                  </td>
+              </tr>
+              <?php } ?>
+           </tbody>
+       </table>
+       <div class="container-fluid">
+         <div class="col-xs-3 col-xs-offset-9">
+           <h3 class="bold">
+             Total <?= ViewHelpers::currencyFormat($this->order->getTotal()) ?>
+             <?= $this->close ?>
+           </h3>
+         </div>
+       </div>
+
+  </div>
+</section>

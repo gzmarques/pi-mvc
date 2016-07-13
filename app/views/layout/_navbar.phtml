@@ -1,0 +1,94 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <ul class="nav nav-pills">
+
+    <?php if (SessionHelpers::isLoggedIn()): ?>
+
+      <li class="btn-lg <?= ViewHelpers::activeClass('/') ?>">
+        <?= ViewHelpers::linkTo('/', 'Página Inicial') ?>
+      </li>
+
+      <li class="btn-lg <?= ViewHelpers::activeClass('/categorias(.*)') ?>">
+        <?= ViewHelpers::linkTo('/categorias', 'Categorias') ?>
+      </li>
+
+      <li class="btn-lg <?= ViewHelpers::activeClass('/produtos(.*)') ?>">
+        <?= ViewHelpers::linkTo('/produtos', 'Produtos') ?>
+      </li>
+
+      <li class="btn-lg <?= ViewHelpers::activeClass('/pedidos(.*)') ?>">
+        <?= ViewHelpers::linkTo('/pedidos', 'Pedidos') ?>
+      </li>
+
+      <li class="btn-lg <?= ViewHelpers::activeClass('/clientes(.*)') ?>">
+        <?= ViewHelpers::linkTo('/clientes', 'Clientes') ?>
+      </li>
+
+      <li class="btn-lg <?= ViewHelpers::activeClass('/relatorios(.*)') ?> dropdown">
+
+        <?= ViewHelpers::linkTo('#', 'Relatórios <span class="caret"></span>', 'class="dropdown-toggle" data-toggle="dropdown"') ?>
+
+        <ul class="dropdown-menu" >
+
+          <li class="<?= ViewHelpers::activeClass('/relatorios/produtos-mais-vendidos') ?>">
+            <?= ViewHelpers::linkTo('/relatorios/produtos-mais-vendidos', 'Best-Sellers') ?>
+          </li>
+
+          <li class="<?= ViewHelpers::activeClass('/relatorios/funcionario-exemplar') ?>">
+            <?= ViewHelpers::linkTo('/relatorios/funcionario-exemplar', 'Funcionário Exemplar') ?>
+          </li>
+
+          <li class="<?= ViewHelpers::activeClass('/relatorios/produtos-menos-vendidos') ?>">
+            <?= ViewHelpers::linkTo('/relatorios/produtos-menos-vendidos', 'Produtos Menos Vendidos') ?>
+          </li>
+
+        </ul>
+
+      </li>
+
+      <div class="pull-right">
+
+        <li class="clearfix dropdown user-area">
+
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <?= ViewHelpers::imageTag("users/{$this->currentUser()->getId()}.jpg", 'class="circle user-img pull-left"') ?>
+            <div class="pull-right">
+              <span class="navbar-link"><?= $this->currentUser()->getFirstName() ?></span>
+              <p class="time navbar-text"><?= date('d/m/Y',time()) ?></p>
+              <p class="time navbar-text"><?= date('H:i',time()) ?></p>
+            </div>
+
+
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-right" >
+
+            <li class="<?= ViewHelpers::activeClass('/perfil') ?>">
+              <?= ViewHelpers::linkTo('/perfil', '<span class="glyphicon glyphicon-wrench"></span> Meu Perfil') ?>
+            </li>
+
+            <li>
+              <?= ViewHelpers::linkTo('/logout', '<span class="glyphicon glyphicon-off"></span> Sair') ?>
+            </li>
+
+          </ul>
+
+        </li>
+
+      </div>
+
+    <?php else: ?>
+
+      <div class="pull-right nav nav-pills">
+
+        <li class="<?= ViewHelpers::activeClass('/login') ?>">
+          <?= ViewHelpers::linkTo('/login', 'Logar-se') ?>
+        </li>
+
+      </div>
+
+    <?php endif ?>
+
+  </ul>
+
+</nav>

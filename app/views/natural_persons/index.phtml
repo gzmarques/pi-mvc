@@ -1,0 +1,37 @@
+<header class="page-header clearfix">
+  <h1>Clientes</h1>
+</header>
+
+<div>
+    <h2>Pessoas Fisicas</h2>
+    <table class='table table-bordered table-striped'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>CEP</th>
+                <th>Tipo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->clients as $client) {?>
+            <tr>
+                <td><?= $client->getId() ?></td>
+                <td><?= $client->getCPF() ?></td>
+                <td><?= $client->getFirstName() ?></td>
+                <td><?= $client->getZipCode() ?></td>
+                <td><?= $client->getType() ?></td>
+                <td>
+                  <?= ViewHelpers::linkTo("/clientes/{$client->getId()}/editar", '<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar" ></span>', 'class="btn btn-xs btn-warning"' ) ?>
+                  <?= ViewHelpers::linkTo("/clientes/{$client->getId()}", '<span class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="Visualizar" ></span>', 'class="btn btn-xs btn-success" href="#details"' ) ?>
+                  <?= ViewHelpers::linkTo("/clientes/{$client->getId()}/deletar", '<span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Deletar" ></span>', 'class="btn btn-xs btn-danger"' ) ?>
+                  <?= ViewHelpers::linkTo("/clientes/{$client->getId()}/pedidos/novo", '<span class="glyphicon glyphicon-plus" data-toggle="tooltip" title="Deletar" ></span>', 'class="btn btn-xs btn-primary"' ) ?>
+                </td>
+            </tr>
+            <?php } ?>
+         </tbody>
+     </table>
+
+</div>

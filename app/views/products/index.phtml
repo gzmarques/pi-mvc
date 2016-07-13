@@ -1,0 +1,33 @@
+<header class="page-header clearfix">
+  <h1>Todos os Produtos</h1>
+  <?= ViewHelpers::linkTo('/produtos/novo', 'Novo Pedido  <span class="glyphicon glyphicon-plus">', 'class="btn btn-primary pull-left"') ?>
+</header>
+<?php require '_search_bar.phtml'; ?>
+<div>
+
+    <table class='table table-bordered table-striped sortable'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Estoque</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->products as $product) {?>
+            <tr class="clickable_row" data-href=<?= ViewHelpers::urlFor("/produtos/{$product->getId()}") ?>>
+                <td><?= $product->getId() ?></td>
+                <td><?= ViewHelpers::truncate($product->getName()) ?></td>
+                <td><?= $product->getCategory()->getName() ?></td>
+                <td><?= $product->getStock() ?></td>
+                <td><?= ViewHelpers::currencyFormat($product->getPrice()) ?></td>
+            </tr>
+            <?php } ?>
+         </tbody>
+     </table>
+
+     <?php echo ViewHelpers::paginate($this); ?>
+
+</div>

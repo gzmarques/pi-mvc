@@ -1,0 +1,12 @@
+<section>
+  <header class='page-header'>
+    <h1> Meu Perfil </h1>
+  </header>
+
+  <h3><?= $this->user->getPermissionClass() == 9 ? "Classe de Permissões ADMIN. Você tem poderes de SuperCow!" : "" ?></h3>
+  <?= ViewHelpers::imageTag("/images/users/{$this->user->getId()}.jpg", "class='avatar'") ?>
+
+  <section>
+    <?php require '_form.phtml'; ?>
+  </section>
+</section>

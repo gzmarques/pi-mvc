@@ -1,0 +1,6 @@
+<?php foreach(Flash::message() as $key => $value){ ?>
+  <div class="alert alert-<?= $key ?> fade in">
+     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+     <?= $value ?>
+  </div>
+<?php } ?>

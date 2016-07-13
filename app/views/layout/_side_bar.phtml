@@ -1,0 +1,48 @@
+<nav class="side-container">
+
+  <ul class="nav nav-pills nav-stacked custum-side-nav">
+    <?php if (SessionHelpers::isLoggedIn()): ?>
+
+      <li class="clearfix dropdown">
+         <span class="pull-left">Olá <?= $this->currentUser()->getFirstName() ?></span>
+         <div class="pull-right">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Opções <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu" >
+             <li class="<?= ViewHelpers::activeClass('/perfil') ?>">
+                <?= ViewHelpers::linkTo('/perfil', 'Meu Perfil') ?>
+             </li>
+             <li class="<?= ViewHelpers::activeClass('/categorias/nova') ?>">
+                <?= ViewHelpers::linkTo('/categorias/nova', 'Nova Categoria') ?>
+             </li>
+             <li>
+                <?= ViewHelpers::linkTo('/logout', 'Sair') ?>
+             </li>
+           </ul>
+         </div>
+      </li>
+
+    <?php else: ?>
+      <li class="<?= ViewHelpers::activeClass('/login') ?>">
+       <?= ViewHelpers::linkTo('/login', 'Logar-se') ?>
+      </li>
+    <?php endif ?>
+  </ul>
+
+  <hr />
+
+  <h5>Menu</h5>
+  <ul class="nav nav-pills nav-stacked custum-side-nav">
+    <li class="<?= ViewHelpers::activeClass('/') ?>">
+       <?= ViewHelpers::linkTo('/', 'Página Inicial') ?>
+    </li>
+    <li class="<?= ViewHelpers::activeClass('/categorias(.*)') ?>">
+       <?= ViewHelpers::linkTo('/categorias', 'Categorias') ?>
+    </li>
+    <li class="<?= ViewHelpers::activeClass('/produtos(.*)') ?>">
+       <?= ViewHelpers::linkTo('/produtos', 'Produtos') ?>
+    </li>
+  </ul>
+
+</nav>

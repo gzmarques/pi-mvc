@@ -1,0 +1,15 @@
+<section>
+
+  <header class="text-center">
+    <h1>Login</h1>
+  </header>
+
+  <form class="form-signin" action="<?= ViewHelpers::urlFor('/login') ?>" method="POST">
+
+    <input type="text" class="form-control" name="user[email]" value="<?= $this->user->getEmail() ?>" placeholder="Seu email" autofocus>
+    <input type="password" class="form-control" name="user[password]" placeholder="Password">
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+  </form>
+
+</section>

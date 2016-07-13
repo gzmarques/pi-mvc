@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><?= ViewHelpers::fullTitle(@$this->pageTitle) ?></title>
+    <?= ViewHelpers::stylesheetIncludeTag('/bootstrap/css/bootstrap.min.css',
+                                          'application.css'); ?>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"></nav>
+
+  <div class="container">
+
+     <div class="row">
+       <div class="col-md-12">
+           <?php require '_navbar.phtml' ?>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-md-12">
+
+         <div class="center-container">
+            <?= ViewHelpers::linkTo(ViewHelpers::previousUrlOr(), '<span class="glyphicon glyphicon-arrow-left" data-toggle="tooltip" title="Voltar" ></span>', 'class="btn btn-xs btn-primary"' ) ?>
+
+            <?php require '_flash_messages.phtml' ?>
+
+            <?php require $view; ?>
+         </div>
+       </div>
+     </div>
+  </div>
+
+  <?= ViewHelpers::javascriptIncludeTag('loader.js',
+                                        'jquery-1.11.3.min.js',
+                                        '/bootstrap/js/bootstrap.min.js',
+                                        'jquery.autocomplete.min.js',
+                                        'sorttable.js',
+                                        'application.js') ?>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<form role="form" action="<?= ViewHelpers::urlFor($this->action) ?>" method="POST">
+
+  <div class="form-group <?= $this->user->getErrors('first_name') ? 'has-error' : '' ?>">
+    <label class="control-label" for="user_first_name">Nome:*</label>
+    <input type="text" class="form-control" name="user[first_name]" value="<?= $this->user->getFirstName() ?>"
+           id="user_first_name" placeholder="Seu nome">
+    <p class="help-block"><?= $this->user->getErrors('first_name') ?></p>
+  </div>
+
+  <div class="form-group <?= $this->user->getErrors('last_name') ? 'has-error' : '' ?>">
+    <label class="control-label" for="user_last_name">Sobrenome:*</label>
+    <input type="text" class="form-control" name="user[last_name]" value="<?= $this->user->getLastName() ?>"
+           id="user_last_name" placeholder="Seu sobrenome">
+    <p class="help-block"><?= $this->user->getErrors('last_name') ?></p>
+  </div>
+
+  <div class="form-group <?= $this->user->getErrors('email') ? 'has-error' : '' ?>">
+    <label class="control-label" for="user_email">Email:*</label>
+    <input type="text" class="form-control" name="user[email]" value="<?= $this->user->getEmail() ?>"
+           id="user_email" placeholder="Seu nome">
+    <p class="help-block"><?= $this->user->getErrors('email') ?></p>
+  </div>
+
+  <div class="form-group <?= $this->user->getErrors('password') ? 'has-error' : '' ?>">
+    <label class="control-label" for="user_password">Senha:*</label>
+    <input type="password" class="form-control" name="user[password]" id="user_password">
+    <p class="help-block"><?= $this->user->getErrors('password') ?></p>
+  </div>
+
+  <?php if($this->view == 'edit') { ?>
+    <div class="form-group">
+      <label class="control-label" for="admission_date">Data de Admissão:</label>
+      <input type="datetime" class="form-control" name="user[admission_date]" id="admission_date" value="<?= ViewHelpers::dateFormat($this->user->getAdmissionDate()) ?>" disabled>
+    </div>
+  <?php } ?>
+
+  <button type="submit" class="btn btn-primary"> <?= $this->submit ?></button>
+</form>

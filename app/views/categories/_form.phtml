@@ -1,0 +1,11 @@
+<form role="form" action="<?= ViewHelpers::urlFor($this->action) ?>" method="POST">
+
+  <div class="form-group <?= $this->category->getErrors('name') ? 'has-error' : '' ?>">
+    <label class="control-label" for="category_name">Nome:*</label>
+    <input type="text" class="form-control" name="category[name]" value="<?= $this->category->getName() ?>"
+           id="category_name" placeholder="Categoria">
+    <p class="help-block"><?= $this->category->getErrors('name') ?></p>
+  </div>
+
+  <button type="submit" class="btn btn-primary"> <?= $this->submit ?></button>
+</form>
